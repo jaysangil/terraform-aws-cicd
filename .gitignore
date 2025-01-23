@@ -1,5 +1,7 @@
 # Local .terraform directories
 **/.terraform/*
+.terraform/
+
 
 # Add this to specifically exclude provider files (e.g., large binaries like .exe files)
 **/terraform-provider-*
