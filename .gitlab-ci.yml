@@ -1,0 +1,40 @@
+# .gitlab-ci.yml
+image: hashicorp/terraform:latest
+
+variables:
+  TF_VAR_gitlab_token: ${GITLAB_ACCESS_TOKE}
+  AWS_ACCESS_KEY : ${MY_AWS_KEY}
+  AWS_SECRET_ACCESS_KEY: ${MY_AWS_ACCESS_KEY}
+  AWS_DEFAULT_REGION: "us-east-1"
+
+cache:
+  paths:
+    - .terraform/
+
+stages:
+  - validate
+  - plan
+  - apply
+  - destroy
+
+validate:
+  script:
+    - terraform init
+    - terraform validate
+
+plan:
+  script:
+    - terraform plan -out=planfile
+  artifacts:
+    paths:
+      - planfile
+
+apply:
+  script:
+    - terraform apply "planfile"
+  when: manual
+
+destroy:
+  script:
+    - terraform destroy -auto-approve
+  when: manual
