@@ -16,7 +16,8 @@ stages:
   - plan
   - apply
   - destroy
-
+  - test
+  
 validate:
   script:
     - terraform init
