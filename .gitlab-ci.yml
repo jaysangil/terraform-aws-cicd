@@ -2,7 +2,7 @@
 image: hashicorp/terraform:latest
 
 variables:
-  TF_VAR_gitlab_token: ${GITLAB_ACCESS_TOKE}
+  TF_VAR_gitlab_token: ${GITLAB_ACCESS_TOKEN}
   AWS_ACCESS_KEY : ${MY_AWS_KEY}
   AWS_SECRET_ACCESS_KEY: ${MY_AWS_ACCESS_KEY}
   AWS_DEFAULT_REGION: "us-east-1"
